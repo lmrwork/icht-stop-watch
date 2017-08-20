@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon } from 'antd-mobile';
-import logo from './logo.svg';
+import { NavBar } from 'antd-mobile';
 import './App.css';
 
 class App extends Component {

@@ -142,6 +142,10 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+          {
+            test: [/\.svg$/],
+            loader: require.resolve('svg-sprite-loader')
+          },
           // Process JS with Babel.
           {
             test: /\.(js|jsx)$/,

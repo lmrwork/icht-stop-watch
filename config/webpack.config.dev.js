@@ -119,7 +119,7 @@ module.exports = {
       {
         test: [/\.svg$/],
         loader: require.resolve('svg-sprite-loader'),
-        include: svgDirs,  // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
+        include: svgDirs  // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
       },
 
       // First, run the linter.

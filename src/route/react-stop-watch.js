@@ -9,6 +9,23 @@ const home = () => <div style={{background:'#935'}}> home </div>;
 const error = () => <div style={{background:'#458'}}> error </div>;
 
 const routes = ({location}) => {
+
+  let component;
+
+  switch (location.pathname) {
+    case '/':
+      component = home;
+      break;
+    case '/yes':
+      component = yes;
+      break;
+    case '/no':
+      component = no;
+      break;
+    default:
+      component = error;
+  }
+
   return (
     <div>
       <ul>
@@ -18,10 +35,7 @@ const routes = ({location}) => {
         <li><Link to="/xxx" replace> /xxx </Link></li>
       </ul>
       <CSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-        <Route location={location} key={location.pathname} path="/" component={home} exact />
-        <Route location={location} key={location.pathname} path="/yes" component={yes} />
-        <Route location={location} key={location.pathname} path="/no" component={no} />
-        <Route location={location} key={location.pathname} path="/xxx" component={error} />
+        <Route location={location} key={location.pathname} path="/" component={component} />
       </CSSTransitionGroup>
     </div>
   );

@@ -4,16 +4,17 @@
 
 .fade-enter {
   opacity: 0.01;
+  position: absolute;
 }
 
 .fade-enter.fade-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
-  position: absolute;
 }
 
 .fade-leave {
   opacity: 1;
+  position: absolute;
 }
 
 .fade-leave.fade-leave-active {

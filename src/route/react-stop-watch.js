@@ -3,10 +3,10 @@ import { CSSTransitionGroup } from 'react-transition-group'
 import { Route, Link } from 'react-router-dom';
 import '../static/css/fade.css';
 
-const yes = () => <div style={{background:'#07c'}}> yes </div>;
-const no = () => <div style={{background:'#a12'}}> no </div>;
-const home = () => <div style={{background:'#935'}}> home </div>;
-const error = () => <div style={{background:'#458'}}> error </div>;
+const yes = () => <div style={{color:'#07c'}}> yes </div>;
+const no = () => <div style={{color:'#a12'}}> no </div>;
+const home = () => <div style={{color:'#935'}}> home </div>;
+const error = () => <div style={{color:'#458'}}> error </div>;
 
 const routes = ({location}) => {
 
@@ -34,7 +34,7 @@ const routes = ({location}) => {
         <li><Link to="/no" replace> /no </Link></li>
         <li><Link to="/xxx" replace> /xxx </Link></li>
       </ul>
-      <CSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+      <CSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={300} className="relative">
         <Route location={location} key={location.pathname} path="/" component={component} />
       </CSSTransitionGroup>
     </div>
@@ -43,4 +43,3 @@ const routes = ({location}) => {
 };
 
 export default routes;
-/*<Route location={location} key={location.pathname} path={location.pathname} component={component}/>*/

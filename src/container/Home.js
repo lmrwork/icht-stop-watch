@@ -26,7 +26,7 @@ export class Home extends PureComponent {
         <NavBar rightContent={ <Icon onClick={ this.onSetting } key="1" type="ellipsis" /> } leftContent={ 'home' } onLeftClick={ () => alert('然而并没有首页！') }> 
           { this.props.lang.homeTitle } 
         </NavBar>
-        <Watch />
+        <Watch deg={60}/>
         <WingBlank>
           <Button className="btn" onClick={ this.onStart }> 开始计时 </Button>
         </WingBlank>

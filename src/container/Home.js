@@ -114,7 +114,7 @@ export class Home extends PureComponent {
           <WhiteSpace/>
           <List>
           {this.state.records.map( (val, idx) => 
-             <List.Item key={idx} extra={`record ${this.state.records.length - idx}`}> {` ----- ${val} seconds-----`} </List.Item>
+             <List.Item key={idx} extra={`record ${this.state.records.length - idx}`}> {` # ${val} seconds`} </List.Item>
           )}
           </List>
         </WingBlank>

@@ -2,8 +2,8 @@ import React from 'react';
 //页面路由
 import { Route } from 'react-router-dom';
 //页面组件
-import Home from '../layout/Home';
-import Log from '../layout/Log';
+import Home from '../container/Home';
+import Log from '../container/Log';
 //路由动画
 import { CSSTransitionGroup } from 'react-transition-group'
 import '../static/css/left.css';
@@ -18,7 +18,6 @@ const routes = ({location}) => {
       </div>
     </CSSTransitionGroup>
   );
-
 };
 
 export default routes;

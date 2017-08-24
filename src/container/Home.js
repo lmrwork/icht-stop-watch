@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
 //action
 import { goLog } from '../action/react-stop-watch';
+//component
+import { Watch } from '../component/Watch';
 
 export class Home extends PureComponent {
    constructor(props) {
@@ -18,6 +20,7 @@ export class Home extends PureComponent {
     return (
       <div id="home">
         <NavBar onLeftClick={this.onBack}> { this.props.lang.homeTitle } </NavBar>
+        <Watch />
       </div>
     );
   }

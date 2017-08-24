@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
+//action
+import { goLog } from '../action/react-stop-watch';
 
 export class Home extends PureComponent {
    constructor(props) {
@@ -26,7 +28,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  goLog: (history) => dispatch( goLog(history) ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

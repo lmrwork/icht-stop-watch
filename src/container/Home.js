@@ -22,6 +22,10 @@ export class Home extends PureComponent {
   }
 
   onSetting = () => {
+    if (this.state.timer) {
+      clearInterval(this.state.timer);
+    }
+    this.props.saveWatchState(this.state);
     this.props.goSetting(this.props.history);
   }
 
@@ -29,13 +33,6 @@ export class Home extends PureComponent {
     if (this.state.disableStart) {
       this.start();
     }
-  }
-
-  componentWillUnmount = () => {
-    if (this.state.timer) {
-      clearInterval(this.state.timer);
-    }
-    this.props.saveWatchState(this.state);
   }
 
   start = () => {

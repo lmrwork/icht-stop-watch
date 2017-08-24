@@ -2,14 +2,32 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
 //action
-import { goHome } from '../action/react-stop-watch';
+import { goHome, saveWatchState } from '../action/react-stop-watch';
+
+let backSecond = 0;
+let timer = null;
+
 export class Setting extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      watchState: props.watchState ? {...props.watchState} : null
+    };
+    //继续计时
+    if (this.state.watchState) {
+      backSecond = this.state.watchState.second;
+      timer = setInterval(() => {
+        backSecond += 0.1;
+      }, 100)
+    }
   }
 
   onBack = () => {
+    //还原计时
+    if (this.state.watchState) {
+      clearInterval(timer);
+      this.props.saveWatchState({...this.state.watchState, second:backSecond});
+    }
     this.props.goHome(this.props.history);
   }
 
@@ -23,11 +41,13 @@ export class Setting extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  lang: state.lang
+  lang: state.lang,
+  watchState: state.watchState,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   goHome: (history) => dispatch(goHome(history)),
+  saveWatchState: (state) => dispatch(saveWatchState(state))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Setting);

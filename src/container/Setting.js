@@ -18,13 +18,13 @@ export class Setting extends PureComponent {
       backSecond = this.state.watchState.second;
       timer = setInterval(() => {
         backSecond += 0.1;
-      }, 100)
+      }, 100);
     }
   }
 
   onBack = () => {
     //还原计时
-    if (timer) {
+    if (this.state.watchState && this.state.watchState.disableStart) {
       clearInterval(timer);
       this.props.saveWatchState({...this.state.watchState, second:backSecond});
     }

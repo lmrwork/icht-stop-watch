@@ -1,7 +1,7 @@
 import React from 'react';
 import '../static/css/watch.css';
 
-export const Watch = ({start}) => (
+export const Watch = ({second}) => (
   <div className="watch">
     <div className="fill">
       <div className="reference"></div>
@@ -74,7 +74,7 @@ export const Watch = ({start}) => (
             <div className="minute-text" style={{ top: '-2rem', left: 0 }}>60</div>
           </div>
           <div className="expand round circle-1"></div>
-          <div className="anchor second" style={ start ? { transform: `rotate(${start*6}deg)` } : { transform: `rotate(0)` } } >
+          <div className="anchor second" style={ second ? { transform: `rotate(${second*6}deg)` } : { transform: `rotate(0)` } } >
             <div className="element second-hand"></div>
           </div>
           <div className="expand round circle-2"></div>

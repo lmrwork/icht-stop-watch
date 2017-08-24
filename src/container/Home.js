@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { NavBar, Icon, Button, WingBlank, WhiteSpace } from 'antd-mobile';
+import { NavBar, Icon, Button, WingBlank, WhiteSpace, Flex, List } from 'antd-mobile';
 //action
 import { goSetting } from '../action/react-stop-watch';
 //component
@@ -11,10 +11,12 @@ export class Home extends PureComponent {
      super(props);
      this.state = {
         second: 0,
+        records: [],
         timer: null,
         disableStart: false,
         disableStop: true,
         disableReset: true,
+        disableCount:true,
      };
    }
 
@@ -35,6 +37,7 @@ export class Home extends PureComponent {
       disableStart: true,
       disableStop: false,
       disableReset: false,
+      disableCount:false,
     });
   }
 
@@ -62,6 +65,14 @@ export class Home extends PureComponent {
       disableStart: false,
       disableStop: true,
       disableReset: true,
+      disableCount:true,
+      records: [],
+    });
+  }
+
+  count = () => {
+    this.setState({
+      records: [this.state.second.toFixed(2), ...this.state.records]
     });
   }
 
@@ -73,11 +84,25 @@ export class Home extends PureComponent {
         </NavBar>
         <Watch second={this.state.second} />
         <WingBlank>
-          <Button className="btn" disabled={this.state.disableStart} onClick={ this.start } type="primary"> 开始/继续 </Button>
-          <WhiteSpace />
-          <Button className="btn" disabled={this.state.disableStop} onClick={ this.stop } type="ghost"> 暂停计时 </Button>
-          <WhiteSpace />
-          <Button className="btn" disabled={this.state.disableReset} onClick={ this.reset } type="warning"> 重置秒表 </Button>
+          <Flex>
+            <Flex.Item>
+              <Button className="btn" style={{width:'100%'}} disabled={this.state.disableStart} onClick={ this.start } type="primary" inline size="small"> 开始/继续 </Button>
+            </Flex.Item>
+            <Flex.Item>
+              <Button className="btn" style={{width:'100%'}} disabled={this.state.disableStop} onClick={ this.stop } type="ghost" inline size="small"> 暂停计时 </Button>
+            </Flex.Item>
+            <Flex.Item>
+              <Button className="btn" style={{width:'100%'}} disabled={this.state.disableReset} onClick={ this.reset } type="warning" inline size="small"> 重置秒表 </Button>
+            </Flex.Item>
+          </Flex>
+          <WhiteSpace/>
+          <Button className="btn" disabled={this.state.disableCount} onClick={ this.count } across size="small"> 记录 </Button>
+          <WhiteSpace/>
+          <List>
+          {this.state.records.map( (val, idx) => 
+             <List.Item key={idx} extra={`record ${this.state.records.length - idx}`}> {` ----- ${val} seconds-----`} </List.Item>
+          )}
+          </List>
         </WingBlank>
       </div>
     );

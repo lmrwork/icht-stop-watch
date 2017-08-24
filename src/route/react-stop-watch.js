@@ -1,12 +1,13 @@
 import React from 'react';
+//页面路由
 import { Route } from 'react-router-dom';
+//页面组件
 import Home from '../layout/Home';
 import Log from '../layout/Log';
+//路由动画
 import { CSSTransitionGroup } from 'react-transition-group'
 import '../static/css/left.css';
 import '../static/css/fade.css';
-
-const error = () => <div style={{color:'#458'}}> error </div>;
 
 const routes = ({location}) => {
   return (

@@ -34,6 +34,7 @@ export class Home extends PureComponent {
       timer: timer,
       disableStart: true,
       disableStop: false,
+      disableReset: false,
     });
   }
 
@@ -44,8 +45,24 @@ export class Home extends PureComponent {
         timer: null,
         disableStart: false,
         disableStop: true,
+        disableReset: false,
       });
     }
+  }
+
+  reset = () => {
+    //清空计时
+    if (this.state.timer) {
+      clearInterval(this.state.timer);
+    }
+    //回复初始状态
+    this.setState({
+      second: 0,
+      timer: null,
+      disableStart: false,
+      disableStop: true,
+      disableReset: true,
+    });
   }
 
   render() {
@@ -56,9 +73,11 @@ export class Home extends PureComponent {
         </NavBar>
         <Watch second={this.state.second} />
         <WingBlank>
-          <Button className="btn" disabled={this.state.disableStart} onClick={ this.start }> 开始计时 </Button>
+          <Button className="btn" disabled={this.state.disableStart} onClick={ this.start } type="primary"> 开始/继续 </Button>
           <WhiteSpace />
-          <Button className="btn" disabled={this.state.disableStop} onClick={ this.stop } type="warning"> 暂停计时 </Button>
+          <Button className="btn" disabled={this.state.disableStop} onClick={ this.stop } type="ghost"> 暂停计时 </Button>
+          <WhiteSpace />
+          <Button className="btn" disabled={this.state.disableReset} onClick={ this.reset } type="warning"> 重置秒表 </Button>
         </WingBlank>
       </div>
     );

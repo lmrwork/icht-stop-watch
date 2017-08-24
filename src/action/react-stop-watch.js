@@ -3,7 +3,7 @@ export const goHome = (history) => ({
   history
 });
 
-export const goLog= (history) => ({
-  type: 'GO_LOG',
+export const goSetting= (history) => ({
+  type: 'GO_SETTING',
   history
 });

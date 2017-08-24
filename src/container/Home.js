@@ -1,26 +1,35 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { NavBar } from 'antd-mobile';
+import { NavBar, Icon, Button, WingBlank } from 'antd-mobile';
 //action
-import { goLog } from '../action/react-stop-watch';
+import { goSetting } from '../action/react-stop-watch';
 //component
 import { Watch } from '../component/Watch';
 
 export class Home extends PureComponent {
-   constructor(props) {
+  constructor(props) {
      super(props);
      this.state = {};
    }
 
-  onBack = () => {
-    this.props.history.push('/log');
+  onSetting = () => {
+    this.props.goSetting(this.props.history);
+  }
+
+  onStart = () => {
+    alert('start');
   }
 
   render() {
     return (
       <div id="home">
-        <NavBar onLeftClick={this.onBack}> { this.props.lang.homeTitle } </NavBar>
+        <NavBar rightContent={ <Icon onClick={ this.onSetting } key="1" type="ellipsis" /> } leftContent={ 'home' } onLeftClick={ () => alert('然而并没有首页！') }> 
+          { this.props.lang.homeTitle } 
+        </NavBar>
         <Watch />
+        <WingBlank>
+          <Button className="btn" onClick={ this.onStart }> 开始计时 </Button>
+        </WingBlank>
       </div>
     );
   }
@@ -31,7 +40,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  goLog: (history) => dispatch( goLog(history) ),
+  goSetting: (history) => dispatch( goSetting(history) ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

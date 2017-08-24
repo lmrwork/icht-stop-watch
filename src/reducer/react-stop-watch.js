@@ -6,10 +6,10 @@ export const reactStopWatch = (state = initialState, action) => {
 	case 'GO_HOME':
 		action.history.push('/');
 		return {...state, lastAction: 'GO_HOME'};
-		
-	case 'GO_LOG':
-		action.history.push('/log');
-		return {...state, lastAction: 'GO_LOG'};
+
+	case 'GO_SETTING':
+		action.history.push('/setting');
+		return {...state, lastAction: 'GO_SETTING'};
 
 	default:
 		return state;

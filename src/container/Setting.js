@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
 //action
 import { goHome } from '../action/react-stop-watch';
-export class Log extends PureComponent {
+export class Setting extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => ({
   goHome: (history) => dispatch( goHome(history) ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Log);
+export default connect(mapStateToProps, mapDispatchToProps)(Setting);

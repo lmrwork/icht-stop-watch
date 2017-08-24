@@ -107,7 +107,7 @@ export class Home extends PureComponent {
             </Flex.Item>
           </Flex>
           <WhiteSpace/>
-          <Button className="btn" disabled={this.state.disableCount} onClick={ this.count } across size="small"> 记录 </Button>
+          <Button className="btn" disabled={this.state.disableCount} onClick={ this.count } size="small"> 记录 </Button>
           <WhiteSpace/>
           <List>
           {this.state.records.map( (val, idx) => 

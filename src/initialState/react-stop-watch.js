@@ -2,6 +2,6 @@
 export const initialState = {
     lang: {
         homeTitle: '劳力士秒表',
-        logTitle: '计时日志',
+        settingTitle: '秒表设置',
     },
 };

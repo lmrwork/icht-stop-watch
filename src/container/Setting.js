@@ -16,7 +16,7 @@ export class Setting extends PureComponent {
   render() {
     return (
       <div id="log">
-        <NavBar onLeftClick={this.onBack}> { this.props.lang.logTitle } </NavBar>
+        <NavBar onLeftClick={this.onBack}> { this.props.lang.settingTitle } </NavBar>
       </div>
     );
   }
@@ -27,7 +27,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  goHome: (history) => dispatch( goHome(history) ),
+  goHome: (history) => dispatch(goHome(history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Setting);

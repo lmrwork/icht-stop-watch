@@ -11,6 +11,9 @@ export const reactStopWatch = (state = initialState, action) => {
 		action.history.push('/setting');
 		return {...state, lastAction: 'GO_SETTING'};
 
+	case 'SAVE_WATCH_STATE':
+		return {...state, watchState: action.watchState};
+
 	default:
 		return state;
   }

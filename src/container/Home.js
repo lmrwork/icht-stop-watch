@@ -2,34 +2,48 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { NavBar, Icon, Button, WingBlank, WhiteSpace, Flex, List } from 'antd-mobile';
 //action
-import { goSetting } from '../action/react-stop-watch';
+import { goSetting, saveWatchState } from '../action/react-stop-watch';
 //component
 import { Watch } from '../component/Watch';
 
 export class Home extends PureComponent {
   constructor(props) {
-     super(props);
-     this.state = {
-        second: 0,
-        records: [],
-        timer: null,
-        disableStart: false,
-        disableStop: true,
-        disableReset: true,
-        disableCount:true,
-     };
-   }
+    super(props);
+    this.state = {
+      second: 0,
+      records: [],
+      timer: null,
+      disableStart: false,
+      disableStop: true,
+      disableReset: true,
+      disableCount:true,
+      ...props.watchState,
+    };
+  }
 
   onSetting = () => {
     this.props.goSetting(this.props.history);
   }
 
+  componentDidMount = () => {
+    if (this.state.disableStart) {
+      this.start();
+    }
+  }
+
+  componentWillUnmount = () => {
+    if (this.state.timer) {
+      clearInterval(this.state.timer);
+    }
+    this.props.saveWatchState(this.state);
+  }
+
   start = () => {
     //开始计时
     const timer = setInterval(() => {
-      this.setState((prevState) => {
-        return {second: prevState.second + 0.1};
-      });
+      this.setState( prevState => (
+        {second: (prevState.second + 0.1)}
+      ));
     }, 100);
     //保存计时状态
     this.setState({
@@ -44,12 +58,12 @@ export class Home extends PureComponent {
   stop = () => {
     if (this.state.timer) {
       clearInterval(this.state.timer);
-      this.setState({
+      this.setState( prevState => ({
         timer: null,
         disableStart: false,
         disableStop: true,
         disableReset: false,
-      });
+      }));
     }
   }
 
@@ -111,10 +125,12 @@ export class Home extends PureComponent {
 
 const mapStateToProps = (state) => ({
   lang: state.lang,
+  watchState: state.watchState,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  goSetting: (history) => dispatch( goSetting(history) ),
+  goSetting: (history) => dispatch(goSetting(history)),
+  saveWatchState: (state) => dispatch(saveWatchState(state))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

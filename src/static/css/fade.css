@@ -5,6 +5,7 @@
 .fade-enter {
   opacity: 0.01;
   position: absolute;
+  width: 100%;
 }
 
 .fade-enter.fade-enter-active {
@@ -15,10 +16,10 @@
 .fade-leave {
   opacity: 1;
   position: absolute;
+  width: 100%;
 }
 
 .fade-leave.fade-leave-active {
   opacity: 0.01;
-  transition: opacity 300ms ease-in;
-  position: absolute;
+  transition: opacity 500ms ease-in;
 }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import routes from '../route/react-stop-watch';
 
-class App extends Component {
+class App extends React.PureComponent {
   render() {
     return (
       <Router>

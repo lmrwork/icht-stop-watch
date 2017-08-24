@@ -14,7 +14,7 @@ export class Setting extends PureComponent {
       watchState: props.watchState ? {...props.watchState} : null
     };
     //继续计时
-    if (this.state.watchState) {
+    if (this.state.watchState && this.state.watchState.disableStart) {
       backSecond = this.state.watchState.second;
       timer = setInterval(() => {
         backSecond += 0.1;
@@ -24,7 +24,7 @@ export class Setting extends PureComponent {
 
   onBack = () => {
     //还原计时
-    if (this.state.watchState) {
+    if (timer) {
       clearInterval(timer);
       this.props.saveWatchState({...this.state.watchState, second:backSecond});
     }

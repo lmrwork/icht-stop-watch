@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
-
+//action
+import { goHome } from '../action/react-stop-watch';
 export class Log extends PureComponent {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ export class Log extends PureComponent {
   }
 
   onBack = () => {
-    this.props.history.push('/');
+    this.props.goHome(this.props.history);
   }
 
   render() {
@@ -26,7 +27,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  goHome: (history) => dispatch( goHome(history) ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Log);

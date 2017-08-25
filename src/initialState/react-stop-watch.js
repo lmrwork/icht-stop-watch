@@ -5,7 +5,7 @@ export const initialState = {
   //全局文本
   lang: {
     // [home]
-    homeTitle: '劳力士秒表',
+    homeTitle: '天梭秒表',
     // [setting]
     settingTitle: '秒表设置',
     watchConfig: '表盘设置',

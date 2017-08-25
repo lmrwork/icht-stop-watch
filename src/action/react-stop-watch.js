@@ -12,3 +12,8 @@ export const saveWatchState= (watchState) => ({
   type: 'SAVE_WATCH_STATE',
   watchState
 });
+
+export const setWatchColor= (colorStyle) => ({
+  type: 'SET_WATCH_COLOR',
+  colorStyle
+});

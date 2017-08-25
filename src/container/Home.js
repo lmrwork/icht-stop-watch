@@ -93,7 +93,7 @@ export class Home extends PureComponent {
         <NavBar rightContent={ <Icon onClick={ this.onSetting } key="1" type="ellipsis" /> } leftContent={ 'home' } onLeftClick={ () => alert('然而并没有首页！') }> 
           { this.props.lang.homeTitle } 
         </NavBar>
-        <Watch second={this.state.second} />
+        <Watch second={this.state.second} color={this.props.watchColor}/>
         <WingBlank>
           <Flex>
             <Flex.Item>
@@ -122,6 +122,7 @@ export class Home extends PureComponent {
 
 const mapStateToProps = (state) => ({
   lang: state.lang,
+  watchColor: state.watchColor,
   watchState: state.watchState,
 });
 

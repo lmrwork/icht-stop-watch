@@ -14,6 +14,9 @@ export const reactStopWatch = (state = initialState, action) => {
 	case 'SAVE_WATCH_STATE':
 		return {...state, watchState: action.watchState};
 
+	case 'SET_WATCH_COLOR':
+		return {...state, watchColor: action.colorStyle};
+
 	default:
 		return state;
   }

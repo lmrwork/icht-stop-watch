@@ -1,8 +1,8 @@
 import React from 'react';
 import '../static/css/watch.css';
 
-export const Watch = ({second}) => (
-  <div className="watch">
+export const Watch = ({second, color}) => (
+  <div className="watch" style={ color ? {...color} : {}}>
     <div className="fill">
       <div className="reference"></div>
       <div className="clock" id="utility-clock">

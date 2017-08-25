@@ -1,7 +1,7 @@
 import React from 'react';
 //router
 import { HashRouter as Router, Route } from 'react-router-dom';
-import routes from '../route/react-stop-watch';
+import { routes } from '../route/react-stop-watch';
 //redux
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';

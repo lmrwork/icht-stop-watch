@@ -9,7 +9,7 @@ import { CSSTransitionGroup } from 'react-transition-group'
 import '../static/css/left.css';
 import '../static/css/fade.css';
 
-const routes = ({location}) => {
+export const routes = ({location}) => {
   return (
     <CSSTransitionGroup transitionName="left" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
       <div id="CSSTransitionGroup" key={location.pathname} className="relative">
@@ -19,5 +19,3 @@ const routes = ({location}) => {
     </CSSTransitionGroup>
   );
 };
-
-export default routes;

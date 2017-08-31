@@ -62,7 +62,14 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+
+  //lmr=> entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: {
+    'react-stop-watch': [require.resolve('./polyfills'), paths.appIndexJs],
+    'v1': ['react', 'react-dom', 'react-router'],
+    'v2': ['react-transition-group']
+  },
+
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -242,6 +249,9 @@ module.exports = {
     ],
   },
   plugins: [
+    //lmr
+    new webpack.optimize.CommonsChunkPlugin({ name: ['v1', 'v2'], minChunks: 2 }),
+
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
